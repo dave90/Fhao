@@ -122,6 +122,25 @@ private:
 		return {false,0};
 	}
 
+	inline pair<bool,keyvalue*> for_loop_it(keyvalue* i,T& t){
+		keyvalue* j=i+1;
+		for(;j!=table_key+table_size;j++){
+			if(isEmptyKey(*j)){
+				return {true,j};
+			}
+			if(t==table_value[getPosition(*j)])
+				return {false,j};
+		}
+		for(j=table_key;j!=i;j++){
+			if(isEmptyKey(*j)){
+				return {true,j};
+			}
+			if(t==table_value[getPosition(*j)])
+				return {false,j};
+		}
+		return {false,nullptr};
+	}
+
 	inline bool isEmptyKey(keyvalue k){
 		return k>>31;
 	}
