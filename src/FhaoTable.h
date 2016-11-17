@@ -15,9 +15,13 @@ using namespace std;
 template <typename T>
 class FhaoTable{
 	using keyvalue=uint32_t;
-	typedef typename std::vector<T>::iterator iterator;
 
 public:
+
+	typedef typename std::vector<T>::iterator iterator;
+	typedef typename std::vector<T>::const_iterator const_iterator;
+
+
 	FhaoTable():table_key(new keyvalue[INIT_SIZE]),table_size(INIT_SIZE),table_size_value(0){initTable();};
 	FhaoTable(unsigned size):table_key(new keyvalue[size]),table_size(size),table_size_value(0){initTable();};
 
