@@ -11,7 +11,8 @@ def run(dim,c,reserve,output):
     print("\t"+res)
 
 DIM=15000000
-chars=[4,8]
+chars=[4,
+       6,8]
 resultNoReserve={}
 resultReserve={}
 for c in chars:
