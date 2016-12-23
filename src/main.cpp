@@ -36,6 +36,17 @@ string generateString(){
 	return s;
 }
 
+struct HE{
+	bool operator()(const string& s1,const string& s2){
+		return s1==s2;
+	}
+	size_t operator()(const string& s2){
+		hash<string> h;
+		return h(s2);
+	}
+
+};
+
 int main(int argc,char *argv[]) {
 	srand(time(0));
 	if(argc<5){
@@ -49,7 +60,7 @@ int main(int argc,char *argv[]) {
 	check=atoi(argv[4]);
 
 	unsigned N=size;
-	FhaoTable<string> fa;
+	FhaoTable<string,HE,HE> fa;
 	unordered_set<string> h;
 	if(reserve){
 		fa.reserve(N);
@@ -91,7 +102,6 @@ int main(int argc,char *argv[]) {
 			if(!h.count( fa[i]))
 				cout<<"ERROR ELEMENT "<<fa[i]<<" not exist in hash"<<endl;
 	}
-
 
 	return 0;
 }

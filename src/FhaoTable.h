@@ -33,6 +33,9 @@ public:
 		copy(ft.table_value.begin(),ft.table_value.begin(),table_value.begin());
 	}
 
+	FhaoTable(FhaoTable&& ft):table_key(ft.table_key),table_size(ft.table_size),table_size_value(ft.table_size_value),table_value(move(ft.table_value)){}
+
+
 	~FhaoTable(){
 		delete[] table_key;
 	}
